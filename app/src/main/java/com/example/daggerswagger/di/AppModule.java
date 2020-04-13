@@ -9,29 +9,28 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.daggerswagger.R;
+import com.example.daggerswagger.util.Constants;
 
 import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 //Modules are re-usable, interchangable classes that provide dependencies
 @Module
 public class AppModule {
-    /**
-    //declares a dependency that can then be injected into AuthActivity
-    //always use STATIC when declaring dependencies using @Provides
-    //@Provides
-    static String someString(){
-        return "this is a test string";
+
+    @Singleton
+    @Provides
+    static Retrofit providesRetrofitInstance(){
+        return new Retrofit.Builder()
+                .baseUrl(Constants.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
     }
 
-    //since the app was bound to the component at creation (using @BindsInstance),
-    //the application object is available to this module
-    @Provides
-    static boolean getApp(Application application){
-        return application == null;
-    } **/
     @Singleton
     @Provides
     static RequestOptions provideRequestOptions(){
@@ -54,4 +53,19 @@ public class AppModule {
     static Drawable provideAppDrawable(Application application){
         return ContextCompat.getDrawable(application, R.drawable.logo);
     }
+
+    /**
+     //declares a dependency that can then be injected into AuthActivity
+     //always use STATIC when declaring dependencies using @Provides
+     //@Provides
+     static String someString(){
+     return "this is a test string";
+     }
+
+     //since the app was bound to the component at creation (using @BindsInstance),
+     //the application object is available to this module
+     @Provides
+     static boolean getApp(Application application){
+     return application == null;
+     } **/
 }
