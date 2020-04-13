@@ -1,12 +1,17 @@
-package com.example.daggerswagger;
+package com.example.daggerswagger.ui.auth;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
 
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
+
 import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.daggerswagger.R;
+import com.example.daggerswagger.viewmodels.ViewModelProviderFactory;
 
 import javax.inject.Inject;
 
@@ -17,6 +22,9 @@ public class AuthActivity extends DaggerAppCompatActivity {
 
     private static final String TAG = "AuthActivity";
 
+    private AuthViewModel viewModel;
+    @Inject
+    ViewModelProviderFactory providerFactory;
     //as long as the return type is the same as @Provides, the name doesn't matter
     @Inject
     Drawable logo;
@@ -29,6 +37,7 @@ public class AuthActivity extends DaggerAppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_auth);
 
+        viewModel = ViewModelProviders.of(this, providerFactory).get(AuthViewModel.class);
         setLogo();
     }
 

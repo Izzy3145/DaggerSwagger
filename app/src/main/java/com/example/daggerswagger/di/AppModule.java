@@ -10,6 +10,8 @@ import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.daggerswagger.R;
 
+import javax.inject.Singleton;
+
 import dagger.Module;
 import dagger.Provides;
 
@@ -30,7 +32,7 @@ public class AppModule {
     static boolean getApp(Application application){
         return application == null;
     } **/
-
+    @Singleton
     @Provides
     static RequestOptions provideRequestOptions(){
         return RequestOptions
@@ -40,12 +42,14 @@ public class AppModule {
 
     //we can get the application object, since it is bound to the AppComponent upon creation
     //and we can get the RequestOptions object since it is created in a module that is listed in the same Component (i.e. this one)
+    @Singleton
     @Provides
     static RequestManager provideGlideInstance(Application application, RequestOptions requestOptions){
         return Glide.with(application)
                 .setDefaultRequestOptions(requestOptions);
     }
 
+    @Singleton
     @Provides
     static Drawable provideAppDrawable(Application application){
         return ContextCompat.getDrawable(application, R.drawable.logo);
