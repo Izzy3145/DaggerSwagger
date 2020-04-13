@@ -9,11 +9,14 @@ import dagger.Component;
 import dagger.android.AndroidInjector;
 import dagger.android.support.AndroidSupportInjectionModule;
 
+//Components are units that resolve dependencies
+//Components provide a way for a class to request dependencies being injected through the @Inject annotation
 @Component(
         //here are all the modules that you'll need to do what I want you to do
         modules = {
                 AndroidSupportInjectionModule.class,
-                ActivityBuildersModule.class
+                ActivityBuildersModule.class,
+                AppModule.class
         })
 
 public interface AppComponent extends AndroidInjector<BaseApplication> {

@@ -11,12 +11,9 @@ public abstract class ActivityBuildersModule {
 
     //this is all that is needed to declare AuthActivity as a potential client
     //no annotations needed in the AuthActivity
+    //when using @ContributesAndroidInjector, method and class must be abstract
     @ContributesAndroidInjector
     abstract AuthActivity contributeAuthActivity();
 
-    //declares a dependency that can then be injected into AuthActivity
-    @Provides
-    static String someString(){
-        return "this is a test string";
-    }
+
 }

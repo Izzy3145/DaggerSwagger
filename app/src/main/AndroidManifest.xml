@@ -3,7 +3,7 @@
     package="com.example.daggerswagger">
 
     <!-- always add the name attribute for apps using Dagger -->
-    
+
     <application
         android:name=".BaseApplication"
         android:allowBackup="true"
