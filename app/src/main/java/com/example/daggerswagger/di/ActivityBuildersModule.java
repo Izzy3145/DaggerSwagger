@@ -15,9 +15,10 @@ public abstract class ActivityBuildersModule {
     //when using @ContributesAndroidInjector, method and class must be abstract
     @ContributesAndroidInjector(
             //adding modules here, to an activity module means the module is scoped to the life of that activity
-            //only the AuthActivity sub-component can use the AuthViewModelsModule
+            //only the AuthActivity sub-component can use these modules
             modules = {AuthViewModelsModule.class,
                     AuthModule.class}
+                    //we can inject attributes from AuthModule all over AuthViewModelsModule and AuthActivity
     )
     public abstract AuthActivity contributeAuthActivity();
 
