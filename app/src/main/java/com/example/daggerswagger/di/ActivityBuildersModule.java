@@ -3,6 +3,7 @@ package com.example.daggerswagger.di;
 import com.example.daggerswagger.di.auth.AuthModule;
 import com.example.daggerswagger.di.auth.AuthViewModelsModule;
 import com.example.daggerswagger.di.main.MainFragmentBuildersModule;
+import com.example.daggerswagger.di.main.MainModule;
 import com.example.daggerswagger.di.main.MainViewModelsModule;
 import com.example.daggerswagger.ui.main.MainActivity;
 import com.example.daggerswagger.ui.auth.AuthActivity;
@@ -27,7 +28,8 @@ public abstract class ActivityBuildersModule {
 
     @ContributesAndroidInjector(
             modules = {MainFragmentBuildersModule.class,
-                    MainViewModelsModule.class}
+                    MainViewModelsModule.class,
+                    MainModule.class}
     )
     abstract MainActivity contributeMainActivity();
 }

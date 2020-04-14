@@ -7,7 +7,7 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
 
-import com.example.daggerswagger.ui.User;
+import com.example.daggerswagger.models.User;
 import com.example.daggerswagger.ui.auth.AuthActivity;
 import com.example.daggerswagger.ui.auth.AuthResource;
 

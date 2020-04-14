@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,7 +13,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.daggerswagger.R;
-import com.example.daggerswagger.ui.User;
+import com.example.daggerswagger.models.User;
 import com.example.daggerswagger.ui.auth.AuthResource;
 import com.example.daggerswagger.viewmodels.ViewModelProviderFactory;
 
@@ -52,6 +51,7 @@ public class ProfileFragment extends DaggerFragment {
     }
 
     private void subscribeObservers(){
+        //the getViewLifecycleOwner is important to use in Fragments,due to their funky lifecycles
         viewModel.getAuthenticatedUser().removeObservers(getViewLifecycleOwner());
         viewModel.getAuthenticatedUser().observe(getViewLifecycleOwner(), new Observer<AuthResource<User>>() {
             @Override

@@ -1,21 +1,18 @@
 package com.example.daggerswagger.ui.auth;
 
-import android.provider.MediaStore;
 import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.LiveDataReactiveStreams;
 import androidx.lifecycle.MediatorLiveData;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
 
 import com.example.daggerswagger.SessionManager;
 import com.example.daggerswagger.di.network.auth.AuthApi;
-import com.example.daggerswagger.ui.User;
+import com.example.daggerswagger.models.User;
 
 import javax.inject.Inject;
 
-import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 

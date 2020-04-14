@@ -16,7 +16,7 @@ import androidx.lifecycle.ViewModelProviders;
 import com.bumptech.glide.RequestManager;
 import com.example.daggerswagger.R;
 import com.example.daggerswagger.ui.main.MainActivity;
-import com.example.daggerswagger.ui.User;
+import com.example.daggerswagger.models.User;
 import com.example.daggerswagger.viewmodels.ViewModelProviderFactory;
 
 import javax.inject.Inject;

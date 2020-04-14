@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 
 import com.example.daggerswagger.BaseActivity;
 import com.example.daggerswagger.R;
+import com.example.daggerswagger.ui.main.posts.PostsFragment;
 import com.example.daggerswagger.ui.main.profile.ProfileFragment;
 
 public class MainActivity extends BaseActivity {
@@ -26,7 +27,7 @@ public class MainActivity extends BaseActivity {
 
     private void testFragment(){
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.main_container, new ProfileFragment())
+                .replace(R.id.main_container, new PostsFragment())
                 .commit();
     }
     @Override

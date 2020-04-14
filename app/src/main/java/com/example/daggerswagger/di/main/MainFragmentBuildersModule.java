@@ -1,5 +1,6 @@
 package com.example.daggerswagger.di.main;
 
+import com.example.daggerswagger.ui.main.posts.PostsFragment;
 import com.example.daggerswagger.ui.main.profile.ProfileFragment;
 
 import dagger.Module;
@@ -7,6 +8,11 @@ import dagger.android.ContributesAndroidInjector;
 
 @Module
 public abstract class MainFragmentBuildersModule {
-@ContributesAndroidInjector
+
+    @ContributesAndroidInjector
     abstract ProfileFragment contributeProfileFragment();
+
+    @ContributesAndroidInjector
+    abstract PostsFragment contributePostsFragment();
+
 }

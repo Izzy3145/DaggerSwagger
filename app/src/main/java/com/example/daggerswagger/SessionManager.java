@@ -6,7 +6,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MediatorLiveData;
 import androidx.lifecycle.Observer;
 
-import com.example.daggerswagger.ui.User;
+import com.example.daggerswagger.models.User;
 import com.example.daggerswagger.ui.auth.AuthResource;
 
 import javax.inject.Inject;
