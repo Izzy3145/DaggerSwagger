@@ -11,13 +11,11 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.bumptech.glide.RequestManager;
-import com.bumptech.glide.request.RequestOptions;
 import com.example.daggerswagger.R;
-import com.example.daggerswagger.main.MainActivity;
+import com.example.daggerswagger.ui.main.MainActivity;
 import com.example.daggerswagger.ui.User;
 import com.example.daggerswagger.viewmodels.ViewModelProviderFactory;
 
