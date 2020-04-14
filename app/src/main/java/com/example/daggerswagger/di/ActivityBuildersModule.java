@@ -1,9 +1,11 @@
 package com.example.daggerswagger.di;
 
 import com.example.daggerswagger.di.auth.AuthModule;
+import com.example.daggerswagger.di.auth.AuthScope;
 import com.example.daggerswagger.di.auth.AuthViewModelsModule;
 import com.example.daggerswagger.di.main.MainFragmentBuildersModule;
 import com.example.daggerswagger.di.main.MainModule;
+import com.example.daggerswagger.di.main.MainScope;
 import com.example.daggerswagger.di.main.MainViewModelsModule;
 import com.example.daggerswagger.ui.main.MainActivity;
 import com.example.daggerswagger.ui.auth.AuthActivity;
@@ -17,6 +19,7 @@ public abstract class ActivityBuildersModule {
     //this is all that is needed to declare AuthActivity as a potential client
     //no annotations needed in the AuthActivity
     //when using @ContributesAndroidInjector, method and class must be abstract
+    @AuthScope
     @ContributesAndroidInjector(
             //adding modules here, to an activity module means the module is scoped to the life of that activity
             //only the AuthActivity sub-component can use these modules
@@ -26,6 +29,7 @@ public abstract class ActivityBuildersModule {
     )
     public abstract AuthActivity contributeAuthActivity();
 
+    @MainScope
     @ContributesAndroidInjector(
             modules = {MainFragmentBuildersModule.class,
                     MainViewModelsModule.class,
