@@ -24,6 +24,7 @@ import io.reactivex.schedulers.Schedulers;
 public class PostsViewModel extends ViewModel {
     private static final String TAG = "PostsViewModel";
 
+    // inject
     private final SessionManager sessionManager;
     private final MainApi mainApi;
 
@@ -33,20 +34,22 @@ public class PostsViewModel extends ViewModel {
     public PostsViewModel(SessionManager sessionManager, MainApi mainApi) {
         this.sessionManager = sessionManager;
         this.mainApi = mainApi;
-        Log.d(TAG, "PostsViewModel: viewmodel is working");
+        Log.d(TAG, "PostsViewModel: viewmodel is working...");
     }
 
     public LiveData<Resource<List<Post>>> observePosts(){
         if(posts == null){
             posts = new MediatorLiveData<>();
-            posts.setValue(Resource.loading((List<Post>) null));
+            posts.setValue(Resource.loading((List<Post>)null));
 
             final LiveData<Resource<List<Post>>> source = LiveDataReactiveStreams.fromPublisher(
-                    mainApi.getPostFromUser(sessionManager.getAuthUser().getValue().data.getId())
+
+                    mainApi.getPostsFromUser(sessionManager.getAuthUser().getValue().data.getId())
+
                             .onErrorReturn(new Function<Throwable, List<Post>>() {
                                 @Override
                                 public List<Post> apply(Throwable throwable) throws Exception {
-                                    Log.e(TAG, "apply: ", throwable );
+                                    Log.e(TAG, "apply: ", throwable);
                                     Post post = new Post();
                                     post.setId(-1);
                                     ArrayList<Post> posts = new ArrayList<>();
@@ -54,18 +57,21 @@ public class PostsViewModel extends ViewModel {
                                     return posts;
                                 }
                             })
+
                             .map(new Function<List<Post>, Resource<List<Post>>>() {
                                 @Override
                                 public Resource<List<Post>> apply(List<Post> posts) throws Exception {
+
                                     if(posts.size() > 0){
                                         if(posts.get(0).getId() == -1){
-                                            return Resource.error("Posts error", null);
+                                            return Resource.error("Something went wrong", null);
                                         }
                                     }
-                                    return Resource.success(posts);
 
+                                    return Resource.success(posts);
                                 }
                             })
+
                             .subscribeOn(Schedulers.io())
             );
 
@@ -79,4 +85,5 @@ public class PostsViewModel extends ViewModel {
         }
         return posts;
     }
+
 }
